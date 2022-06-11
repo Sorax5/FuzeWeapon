@@ -1,0 +1,19 @@
+name: FuzeWeapon
+version: '${project.version}'
+main: fr.soraxdubbing.fuzeweapon.FuzeWeapon
+api-version: 1.16
+authors: [ SoraxDubbing ]
+description: Plugin pour le mini projet commitionner par l'équipe de FuzeIII
+commands:
+  weapon:
+    description: permet de se donner les armes de la destruction
+    usage: /weapon <mitraillette,fish_launcher,laser,poséidon,invocateur,all>
+    default: op
+    permission: weapon.give
+    aliases:
+      - w
+      - Weapon
+      - wp
+      - Wp
+      - WP
+
