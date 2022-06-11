@@ -2,6 +2,8 @@ package fr.soraxdubbing.fuzeweapon;
 
 import fr.soraxdubbing.fuzeweapon.commands.WeaponGive;
 import fr.soraxdubbing.fuzeweapon.commands.WeaponGiveCompletion;
+import fr.soraxdubbing.fuzeweapon.event.WeaponInteract;
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +27,7 @@ public final class FuzeWeapon extends JavaPlugin {
         }
         getCommand("weapon").setExecutor(new WeaponGive(this));
         getCommand("weapon").setTabCompleter(new WeaponGiveCompletion());
+        Bukkit.getServer().getPluginManager().registerEvents(new WeaponInteract(this),this);
     }
 
     @Override
