@@ -63,6 +63,7 @@ public class WeaponGive implements CommandExecutor {
                             end += "§4[Error]§r Veuillez indiquer une arme valide <mitraillette,fish_launcher,laser,poséidon,invocateur,all>";
                             break;
                     }
+                    break;
                 default:
                     end += "§4[Error]§r Vous avez besoin d'uniquement un seul paramètre <mitraillette,fish_launcher,laser,poséidon,invocateur,all>";
                     break;
