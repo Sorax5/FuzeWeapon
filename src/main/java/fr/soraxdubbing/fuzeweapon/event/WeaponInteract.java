@@ -3,12 +3,19 @@ package fr.soraxdubbing.fuzeweapon.event;
 import fr.soraxdubbing.fuzeweapon.FuzeWeapon;
 import fr.soraxdubbing.fuzeweapon.WeaponEnum;
 import fr.soraxdubbing.fuzeweapon.entity.CustomZombie;
+import fr.soraxdubbing.fuzeweapon.threads.FishCooldown;
+import fr.soraxdubbing.fuzeweapon.threads.LaserEffect;
 import fr.soraxdubbing.fuzeweapon.threads.ShootThread;
+import net.minecraft.server.v1_16_R3.EntityCod;
+import net.minecraft.server.v1_16_R3.EntityFish;
 import net.minecraft.server.v1_16_R3.EntityTypes;
 import net.minecraft.server.v1_16_R3.World;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_16_R3.CraftWorld;
+import org.bukkit.entity.Cod;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -59,10 +66,10 @@ public class WeaponInteract implements Listener {
                         PoseidonEffect();
                         break;
                     case LASER:
-                        LaserEffect();
+                        LaserEffect(event.getPlayer());
                         break;
                     case FISH_SHOOTER:
-                        FishShooterEffect();
+                        FishShooterEffect(event.getPlayer());
                         break;
                 }
             }
@@ -105,11 +112,31 @@ public class WeaponInteract implements Listener {
 
     }
 
-    private void LaserEffect(){
-
+    private void LaserEffect(Player player){
+        LaserEffect laserEffect = new LaserEffect(player);
+        laserEffect.run();
     }
 
-    private void FishShooterEffect(){
-
+    private void FishShooterEffect(Player player){
+        Location pLoc = player.getLocation();
+        Random random = new Random();
+        Entity fish = null;
+        switch (random.nextInt(4)){
+            case 0:
+                fish = player.getWorld().spawnEntity(pLoc, EntityType.SALMON);
+                break;
+            case 1:
+                fish = player.getWorld().spawnEntity(pLoc, EntityType.COD);
+                break;
+            case 2:
+                fish = player.getWorld().spawnEntity(pLoc, EntityType.PUFFERFISH);
+                break;
+            case 3:
+                fish = player.getWorld().spawnEntity(pLoc, EntityType.TROPICAL_FISH);
+                break;
+        }
+        fish.setVelocity(player.getEyeLocation().getDirection().multiply(1));
+        FishCooldown fishCooldown = new FishCooldown(fish);
+        fishCooldown.runTaskTimer(plugin,0,15);
     }
 }

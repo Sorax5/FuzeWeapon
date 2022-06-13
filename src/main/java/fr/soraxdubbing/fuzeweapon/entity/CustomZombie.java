@@ -15,10 +15,13 @@ public class CustomZombie extends EntityZombie {
         this.setCustomName(new ChatComponentText("§5El pablo le Mouton"));
         this.setCustomNameVisible(true);
 
-        this.goalSelector.a(1,new PathfinderGoalAvoidTarget<CustomZombie>(this,CustomZombie.class,8.0F,1F,1F));
-        this.targetSelector.a(0,new PathfinderGoalNearestAttackableTarget<EntityMonster>(this,EntityMonster.class,true));
-        this.targetSelector.a(1,new PathfinderGoalLeapAtTarget(this,1.0F));
-        this.goalSelector.a(0,new PathfinderGoalLookAtPlayer(this,EntityHuman.class,0.1F));
+        this.goalSelector.a(0, new PathfinderGoalFloat(this));
+        this.goalSelector.a(2,new PathfinderGoalLookAtPlayer(this,EntityHuman.class,8.0F));
+        this.goalSelector.a(4,new PathfinderGoalAvoidTarget<CustomZombie>(this,CustomZombie.class,8.0F,1F,1F));
+
+        this.targetSelector.a(0,new PathfinderGoalNearestAttackableTarget<EntityMonster>(this,EntityMonster.class,false));
+        this.targetSelector.a(1,new PathfinderGoalLeapAtTarget(this,0.1F));
+
 
         this.getWorld().addEntity(this);
     }
