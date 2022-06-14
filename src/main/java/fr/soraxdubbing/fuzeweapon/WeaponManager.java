@@ -37,9 +37,10 @@ public class WeaponManager {
         ItemMeta mMeta = mitraillette.getItemMeta();
         mMeta.setDisplayName("§7§lMitraillette");
         List<String> lore = new ArrayList<>();
+        lore.add("§3§l---- DESCRIPTION ----");
         lore.add("§cA ne pas laisser dans la main d'un fragile");
         mMeta.setLore(lore);
-        mMeta.setCustomModelData(5000);
+        mMeta.setCustomModelData(5);
         mitraillette.setItemMeta(mMeta);
         return mitraillette;
     }
@@ -49,9 +50,10 @@ public class WeaponManager {
         ItemMeta lMeta = laser.getItemMeta();
         lMeta.setDisplayName("§c§lLaser");
         List<String> lore = new ArrayList<>();
+        lore.add("§3§l---- DESCRIPTION ----");
         lore.add("§cAttention ! Rebondissement garanti !");
         lMeta.setLore(lore);
-        lMeta.setCustomModelData(5001);
+        lMeta.setCustomModelData(10);
         laser.setItemMeta(lMeta);
         return laser;
     }
@@ -61,9 +63,10 @@ public class WeaponManager {
         ItemMeta fMeta = fish.getItemMeta();
         fMeta.setDisplayName("§3§lLanceur de poisson");
         List<String> lore = new ArrayList<>();
+        lore.add("§3§l---- DESCRIPTION ----");
         lore.add("§cQuoi ? des poissons ?");
         fMeta.setLore(lore);
-        fMeta.setCustomModelData(5002);
+        fMeta.setCustomModelData(15);
         fish.setItemMeta(fMeta);
         return fish;
     }
@@ -73,9 +76,10 @@ public class WeaponManager {
         ItemMeta pMeta = poseidon.getItemMeta();
         pMeta.setDisplayName("§3§lSceptre de Poséidon");
         List<String> lore = new ArrayList<>();
+        lore.add("§3§l---- DESCRIPTION ----");
         lore.add("§cLa puissance de la mer afflue en vous !");
         pMeta.setLore(lore);
-        pMeta.setCustomModelData(5003);
+        pMeta.setCustomModelData(20);
         poseidon.setItemMeta(pMeta);
         return poseidon;
     }
@@ -85,9 +89,10 @@ public class WeaponManager {
         ItemMeta iMeta = invocateur.getItemMeta();
         iMeta.setDisplayName("§2§lBâton de l’invocateur");
         List<String> lore = new ArrayList<>();
+        lore.add("§3§l---- DESCRIPTION ----");
         lore.add("§cVous sentez des âmes émerger de ce bâton");
         iMeta.setLore(lore);
-        iMeta.setCustomModelData(5003);
+        iMeta.setCustomModelData(25);
         invocateur.setItemMeta(iMeta);
         return invocateur;
     }
