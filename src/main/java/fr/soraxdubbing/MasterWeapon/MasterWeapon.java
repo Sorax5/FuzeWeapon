@@ -1,17 +1,15 @@
-package fr.soraxdubbing.fuzeweapon;
+package fr.soraxdubbing.MasterWeapon;
 
-import fr.soraxdubbing.fuzeweapon.commands.WeaponGive;
-import fr.soraxdubbing.fuzeweapon.commands.WeaponGiveCompletion;
-import fr.soraxdubbing.fuzeweapon.event.WeaponInteract;
+import fr.soraxdubbing.MasterWeapon.commands.WeaponGive;
+import fr.soraxdubbing.MasterWeapon.commands.WeaponGiveCompletion;
+import fr.soraxdubbing.MasterWeapon.event.WeaponInteract;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public final class FuzeWeapon extends JavaPlugin {
+public final class MasterWeapon extends JavaPlugin {
 
     private HashMap<WeaponEnum,ItemStack> weaponList;
 

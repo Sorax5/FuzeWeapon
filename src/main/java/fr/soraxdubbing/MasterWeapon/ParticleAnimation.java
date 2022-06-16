@@ -1,8 +1,10 @@
-package fr.soraxdubbing.fuzeweapon;
+package fr.soraxdubbing.MasterWeapon;
 
+import net.minecraft.server.v1_16_R3.EntityLiving;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
@@ -95,7 +97,7 @@ public class ParticleAnimation {
         Block lastBlock = iter.next();
         while (iter.hasNext()) {
             lastBlock = iter.next();
-            if (lastBlock.getType() == Material.AIR) {
+            if (lastBlock.getType() == Material.AIR || lastBlock.getType() == Material.WATER) {
                 continue;
             }
             break;
@@ -134,4 +136,42 @@ public class ParticleAnimation {
         }
         return loc;
     }
+
+    public static void summonCircle(Location location, int size,Color color) {
+        for (int d = 0; d <= 90; d += 1) {
+            Location particleLoc = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
+            particleLoc.setX(location.getX() + Math.cos(d) * size);
+            particleLoc.setZ(location.getZ() + Math.sin(d) * size);
+            location.getWorld().spawnParticle(Particle.REDSTONE, particleLoc, 1, new Particle.DustOptions(color, 5));
+        }
+    }
+
+    public static Boolean isInRange(Location location, Location location2, int range) {
+        double xPow = Math.pow(Math.abs(location.getX() - location2.getX() ), 2);
+        double yPow = Math.pow(Math.abs(location.getY() - location2.getY() ), 2);
+        double zPow = Math.pow(Math.abs(location.getZ() - location2.getZ() ), 2);
+        double is = Math.sqrt(xPow + yPow + zPow);
+        return is < range;
+    }
+
+    public static EntityLiving getTargetEntity(Player player, int radius) {
+        Entity toReturn = null;
+        for(Entity e : player.getNearbyEntities(10, 10, 10)){
+            if(e.getLocation().getDirection() == player.getLocation().getDirection() && e instanceof EntityLiving){
+                toReturn = e;
+            }
+        }
+        return (EntityLiving) toReturn;
+    }
+
+    public static boolean getLookingAt(Player player, Entity entity)
+    {
+        List<Block> blocks = player.getLineOfSight(null, 100);
+        for (Block block : blocks) {
+            if(block.getLocation() == entity.getLocation())
+                return true;
+        }
+        return false;
+    }
+
 }

@@ -1,4 +1,4 @@
-package fr.soraxdubbing.fuzeweapon;
+package fr.soraxdubbing.MasterWeapon;
 
 public enum WeaponEnum {
     MITRAILLETTE,

@@ -1,6 +1,6 @@
-name: FuzeWeapon
+name: MasterWeapon
 version: '${project.version}'
-main: fr.soraxdubbing.fuzeweapon.FuzeWeapon
+main: fr.soraxdubbing.MasterWeapon.MasterWeapon
 api-version: 1.16
 authors: [ SoraxDubbing ]
 description: Plugin pour le mini projet commitionner par l'équipe de FuzeIII

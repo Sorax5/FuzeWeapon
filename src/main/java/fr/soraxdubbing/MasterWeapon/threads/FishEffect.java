@@ -1,17 +1,18 @@
-package fr.soraxdubbing.fuzeweapon.threads;
+package fr.soraxdubbing.MasterWeapon.threads;
 
+import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class FishCooldown extends BukkitRunnable {
+public class FishEffect extends BukkitRunnable {
 
     private Entity fish;
 
-    private int cooldown = 5;
+    private int cooldown = 6;
 
     private boolean c = false;
 
-    public FishCooldown(Entity fish){
+    public FishEffect(Entity fish){
         this.fish = fish;
         fish.setCustomNameVisible(true);
         this.fish.setFallDistance(0);
@@ -35,9 +36,9 @@ public class FishCooldown extends BukkitRunnable {
                 fish.setCustomName("§r" + cooldown);
             }
             c = !c;
+            fish.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, fish.getLocation(), 30);
 
             cooldown--;
-            System.out.println(cooldown);
         }
     }
 }

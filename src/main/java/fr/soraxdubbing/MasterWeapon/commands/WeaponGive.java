@@ -1,7 +1,7 @@
-package fr.soraxdubbing.fuzeweapon.commands;
+package fr.soraxdubbing.MasterWeapon.commands;
 
-import fr.soraxdubbing.fuzeweapon.FuzeWeapon;
-import fr.soraxdubbing.fuzeweapon.WeaponEnum;
+import fr.soraxdubbing.MasterWeapon.MasterWeapon;
+import fr.soraxdubbing.MasterWeapon.WeaponEnum;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,13 +9,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class WeaponGive implements CommandExecutor {
 
     private HashMap<WeaponEnum,ItemStack> weaponList;
 
-    public WeaponGive(FuzeWeapon plugin){
+    public WeaponGive(MasterWeapon plugin){
         this.weaponList = plugin.getWeaponList();
     }
 

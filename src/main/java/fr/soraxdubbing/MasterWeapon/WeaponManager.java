@@ -1,6 +1,8 @@
-package fr.soraxdubbing.fuzeweapon;
+package fr.soraxdubbing.MasterWeapon;
 
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -38,7 +40,7 @@ public class WeaponManager {
         mMeta.setDisplayName("§7§lMitraillette");
         List<String> lore = new ArrayList<>();
         lore.add("§3§l---- DESCRIPTION ----");
-        lore.add("§cA ne pas laisser dans la main d'un fragile");
+        lore.add("§aA ne pas laisser dans la main d'un fragile");
         mMeta.setLore(lore);
         mMeta.setCustomModelData(5);
         mitraillette.setItemMeta(mMeta);
@@ -51,7 +53,7 @@ public class WeaponManager {
         lMeta.setDisplayName("§c§lLaser");
         List<String> lore = new ArrayList<>();
         lore.add("§3§l---- DESCRIPTION ----");
-        lore.add("§cAttention ! Rebondissement garanti !");
+        lore.add("§aAttention ! Rebondissement garanti !");
         lMeta.setLore(lore);
         lMeta.setCustomModelData(10);
         laser.setItemMeta(lMeta);
@@ -64,7 +66,7 @@ public class WeaponManager {
         fMeta.setDisplayName("§3§lLanceur de poisson");
         List<String> lore = new ArrayList<>();
         lore.add("§3§l---- DESCRIPTION ----");
-        lore.add("§cQuoi ? des poissons ?");
+        lore.add("§aQuoi ? des poissons ?");
         fMeta.setLore(lore);
         fMeta.setCustomModelData(15);
         fish.setItemMeta(fMeta);
@@ -77,9 +79,15 @@ public class WeaponManager {
         pMeta.setDisplayName("§3§lSceptre de Poséidon");
         List<String> lore = new ArrayList<>();
         lore.add("§3§l---- DESCRIPTION ----");
-        lore.add("§cLa puissance de la mer afflue en vous !");
+        lore.add("§aLa puissance de la mer afflue en vous !");
+        lore.add("§3§l---- ATTRIBUTS ----");
+        lore.add("- §r+13 §4§lForce§r");
+        lore.add("- §r+5 §2§lVitesse§r");
         pMeta.setLore(lore);
         pMeta.setCustomModelData(20);
+        pMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier("generic.attackDamage", 13, AttributeModifier.Operation.ADD_NUMBER));
+        pMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier("generic.attackSpeed", 5, AttributeModifier.Operation.ADD_NUMBER));
+
         poseidon.setItemMeta(pMeta);
         return poseidon;
     }
@@ -90,7 +98,7 @@ public class WeaponManager {
         iMeta.setDisplayName("§2§lBâton de l’invocateur");
         List<String> lore = new ArrayList<>();
         lore.add("§3§l---- DESCRIPTION ----");
-        lore.add("§cVous sentez des âmes émerger de ce bâton");
+        lore.add("§aVous sentez des âmes émerger de ce bâton");
         iMeta.setLore(lore);
         iMeta.setCustomModelData(25);
         invocateur.setItemMeta(iMeta);
