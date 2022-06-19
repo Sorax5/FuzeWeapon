@@ -174,4 +174,29 @@ public class ParticleAnimation {
         return false;
     }
 
+    public static Location getSymetricPointAtNormal(Location point,Location p2,Vector normal) {
+        Location A = point.clone();
+        Location B = getLocationBetweenVectoraAndLocation(point,p2,normal.clone());
+        double x = (2*A.getX() - B.getX());
+        double y = (2*A.getY() - B.getY());
+        double z = (2*A.getZ() - B.getZ());
+        return new Location(point.getWorld(),x,y,z);
+    }
+
+    public static Location getLocationBetweenVectoraAndLocation(Location point,Location p2,Vector normal){
+        double x = (point.getX() * normal.getX()) + (p2.getX() * normal.getX());
+        double y = (point.getY() * normal.getY()) + (p2.getY() * normal.getY());
+        double z = (point.getZ() * normal.getZ()) + (p2.getZ() * normal.getZ());
+        return new Location(point.getWorld(),x,y,z);
+    }
+
+    public static double getAngleBetweenTwoVector(Vector v1,Vector v2){
+        double produitSclaire = v1.getX()*v2.getX() + v1.getZ()*v2.getZ() + v1.getY()*v2.getY();
+        double normeDirection = Math.sqrt(Math.pow(v1.getX(),2) + Math.pow(v1.getZ(),2) + Math.pow(v1.getY(),2));
+        double normeBlockFace = Math.sqrt(Math.pow(v1.getX(),2) + Math.pow(v1.getZ(),2) + Math.pow(v1.getY(),2));
+        System.out.println(produitSclaire + " / " + normeDirection + " / " + normeBlockFace);
+        double cos = produitSclaire / (normeDirection * normeBlockFace);
+        return Math.toDegrees(Math.acos(cos));
+    }
+
 }

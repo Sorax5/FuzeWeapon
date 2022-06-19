@@ -50,6 +50,7 @@ public class WeaponInteract implements Listener {
         shooter = new ArrayList<>();
         this.shootThread = new ShootThread(shooter);
         shootThread.runTaskTimer(plugin, 0, 2);
+        this.playerPet = new HashMap<>();
 
         List<PotionEffect> poseidon = new ArrayList<>();
         poseidon.add(new PotionEffect(PotionEffectType.WATER_BREATHING, 6, 0));
@@ -75,7 +76,7 @@ public class WeaponInteract implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent event){
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
-        if(item.getType() != Material.AIR && (event.getAction().equals(Action.RIGHT_CLICK_AIR) ||event.getAction().equals(Action.RIGHT_CLICK_BLOCK))){
+        if(item.getType() != Material.AIR && ((event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)))){
             if(this.weaponList.containsValue(item)){
                 WeaponEnum weaponType = null;
                 for (Map.Entry<WeaponEnum,ItemStack> entry : weaponList.entrySet()){
@@ -129,12 +130,20 @@ public class WeaponInteract implements Listener {
         }
     }
 
-    private HashMap<Player,List<CustomZombie>> playerPet = new HashMap<>();
+    private HashMap<Player,List<CustomZombie>> playerPet;
 
     private void InvocateurEffect(Player player){
         player.playSound(player.getLocation(), "fuze_weapon:effect.invocateur", 100, 1);
+        Random random = new Random();
 
-        CustomZombie zombie = new CustomZombie(EntityTypes.ZOMBIE,player.getLocation(),player);
+        float x = (float) (player.getLocation().getX() + Math.random() * 2 - 1);
+        float y = 1;
+        float z = (float) (player.getLocation().getZ() + Math.random() * 2 - 1);
+        Location spawnTo = new Location(player.getWorld(), x, y, z);
+
+        player.getWorld().spawnParticle(Particle.SMOKE_LARGE, spawnTo, 10);
+
+        CustomZombie zombie = new CustomZombie(EntityTypes.ZOMBIE,spawnTo,player);
         //zombie.setOwner(player);
         //zombie.setName("§5El pablo le Zombie de " + player.getName());
         //zombie.setGoalTarget(((CraftPlayer)player).getHandle());

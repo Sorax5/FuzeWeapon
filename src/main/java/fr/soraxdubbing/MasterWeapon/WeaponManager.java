@@ -40,7 +40,8 @@ public class WeaponManager {
         mMeta.setDisplayName("§7§lMitraillette");
         List<String> lore = new ArrayList<>();
         lore.add("§3§l---- DESCRIPTION ----");
-        lore.add("§aA ne pas laisser dans la main d'un fragile");
+        lore.add("§aAttention ou vous l'a tourner");
+        lore.add("Un click pour tirer, un pour l'arrêter");
         mMeta.setLore(lore);
         mMeta.setCustomModelData(5);
         mitraillette.setItemMeta(mMeta);
